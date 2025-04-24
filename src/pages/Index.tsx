@@ -1,22 +1,21 @@
 
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import FileUpload from '../components/FileUpload';
+import CompanySearch from '../components/CompanySearch';
 import AssumptionsForm from '../components/AssumptionsForm';
 import ValuationResults from '../components/ValuationResults';
 import StepsNavigation from '../components/StepsNavigation';
 import { calculateDCF } from '../utils/dcfCalculator';
-import { FinancialStatements, Assumptions, ValuationResult } from '../types';
+import { Assumptions, ValuationResult } from '../types';
 import { toast } from 'sonner';
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [financialStatements, setFinancialStatements] = useState<FinancialStatements>({
-    incomeStatement: null,
-    balanceSheet: null,
-    cashFlowStatement: null,
-    annualReport: null
-  });
+  const [selectedCompany, setSelectedCompany] = useState<{
+    symbol: string;
+    name: string;
+    exchange: string;
+  } | null>(null);
   
   const [assumptions, setAssumptions] = useState<Assumptions>({
     growthRate: '5',
@@ -30,18 +29,14 @@ const Index = () => {
   const [valuationResult, setValuationResult] = useState<ValuationResult | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
   
-  const handleFileUpload = (type: keyof FinancialStatements, file: File) => {
-    setFinancialStatements(prev => ({
-      ...prev,
-      [type]: file
-    }));
+  const handleCompanySelect = (company: { symbol: string; name: string; exchange: string }) => {
+    setSelectedCompany(company);
+    toast.success(`Selected ${company.name}`);
   };
   
   const isNextDisabled = () => {
     if (currentStep === 0) {
-      return !financialStatements.incomeStatement || 
-             !financialStatements.balanceSheet || 
-             !financialStatements.cashFlowStatement;
+      return !selectedCompany;
     }
     if (currentStep === 1) {
       return !assumptions.growthRate || 
@@ -69,11 +64,9 @@ const Index = () => {
   const performValuation = () => {
     setIsCalculating(true);
     
-    // In a real app, we would process the uploaded files here
-    // For now, we'll simulate with a timeout
+    // In a real app, we would fetch financial data for the selected company here
     setTimeout(() => {
       try {
-        // In reality, we would extract the initial cash flow from the uploaded statements
         const result = calculateDCF(assumptions);
         setValuationResult(result);
         setCurrentStep(prev => prev + 1);
@@ -90,31 +83,15 @@ const Index = () => {
     switch (currentStep) {
       case 0:
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FileUpload 
-              title="Income Statement"
-              description="Upload the company's income statement (CSV, Excel or PDF)"
-              fileType="incomeStatement"
-              onFileUpload={(file) => handleFileUpload('incomeStatement', file)}
-            />
-            <FileUpload 
-              title="Balance Sheet"
-              description="Upload the company's balance sheet (CSV, Excel or PDF)"
-              fileType="balanceSheet"
-              onFileUpload={(file) => handleFileUpload('balanceSheet', file)}
-            />
-            <FileUpload 
-              title="Cash Flow Statement"
-              description="Upload the company's cash flow statement (CSV, Excel or PDF)"
-              fileType="cashFlowStatement"
-              onFileUpload={(file) => handleFileUpload('cashFlowStatement', file)}
-            />
-            <FileUpload 
-              title="Annual Report (Optional)"
-              description="Upload the company's annual report for additional analysis"
-              fileType="annualReport"
-              onFileUpload={(file) => handleFileUpload('annualReport', file)}
-            />
+          <div className="w-full">
+            <CompanySearch onCompanySelect={handleCompanySelect} />
+            {selectedCompany && (
+              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <h3 className="font-semibold text-green-800">Selected Company</h3>
+                <p className="text-green-700">{selectedCompany.name} ({selectedCompany.symbol})</p>
+                <p className="text-sm text-green-600">{selectedCompany.exchange}</p>
+              </div>
+            )}
           </div>
         );
       case 1:
@@ -134,11 +111,11 @@ const Index = () => {
             <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg max-w-md mx-auto">
               <h3 className="font-semibold text-blue-800 mb-2">Summary</h3>
               <ul className="text-left text-sm space-y-1 text-blue-700">
-                <li>Financial Statements: {Object.values(financialStatements).filter(Boolean).length} files uploaded</li>
+                <li>Company: {selectedCompany?.name} ({selectedCompany?.symbol})</li>
+                <li>Exchange: {selectedCompany?.exchange}</li>
                 <li>Forecast Period: {assumptions.forecastPeriod} years</li>
-                <li>Revenue Growth Rate: {assumptions.growthRate}%</li>
+                <li>Growth Rate: {assumptions.growthRate}%</li>
                 <li>Discount Rate (WACC): {assumptions.discountRate}%</li>
-                <li>Perpetual Growth Rate: {assumptions.perpetualGrowthRate}%</li>
               </ul>
             </div>
           </div>
@@ -164,7 +141,7 @@ const Index = () => {
       <main className="container py-8 flex-1">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-xl font-semibold mb-6 text-finance">
-            {currentStep === 0 && "Step 1: Upload Financial Statements"}
+            {currentStep === 0 && "Step 1: Select Company"}
             {currentStep === 1 && "Step 2: Set DCF Assumptions"}
             {currentStep === 2 && "Step 3: Review and Calculate"}
             {currentStep === 3 && "Valuation Results"}
@@ -185,7 +162,10 @@ const Index = () => {
           {currentStep === 3 && (
             <div className="mt-6 text-center">
               <button 
-                onClick={() => setCurrentStep(0)}
+                onClick={() => {
+                  setCurrentStep(0);
+                  setSelectedCompany(null);
+                }}
                 className="text-finance hover:text-finance-accent underline"
               >
                 Start New Valuation
