@@ -44,27 +44,29 @@ const CompanySearch = ({ onCompanySelect }: CompanySearchProps) => {
               className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             />
           </div>
-          {filteredCompanies.length === 0 && (
-            <CommandEmpty className="py-6 text-center text-sm">
-              No companies found.
-            </CommandEmpty>
-          )}
+          
           <CommandGroup className="max-h-60 overflow-auto">
-            {filteredCompanies.map((company) => (
-              <CommandItem
-                key={company.symbol}
-                onSelect={() => onCompanySelect(company)}
-                className="flex items-center px-4 py-2 hover:bg-accent cursor-pointer"
-              >
-                <div>
-                  <p className="font-medium">{company.symbol}</p>
-                  <p className="text-sm text-muted-foreground">{company.name}</p>
-                </div>
-                <span className="ml-auto text-xs text-muted-foreground">
-                  {company.exchange}
-                </span>
-              </CommandItem>
-            ))}
+            {filteredCompanies.length === 0 ? (
+              <CommandEmpty className="py-6 text-center text-sm">
+                No companies found.
+              </CommandEmpty>
+            ) : (
+              filteredCompanies.map((company) => (
+                <CommandItem
+                  key={company.symbol}
+                  onSelect={() => onCompanySelect(company)}
+                  className="flex items-center px-4 py-2 hover:bg-accent cursor-pointer"
+                >
+                  <div>
+                    <p className="font-medium">{company.symbol}</p>
+                    <p className="text-sm text-muted-foreground">{company.name}</p>
+                  </div>
+                  <span className="ml-auto text-xs text-muted-foreground">
+                    {company.exchange}
+                  </span>
+                </CommandItem>
+              ))
+            )}
           </CommandGroup>
         </Command>
       </CardContent>
