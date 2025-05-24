@@ -117,7 +117,7 @@ const Index = () => {
                 <li>Company: {selectedCompany?.name} ({selectedCompany?.symbol})</li>
                 <li>Exchange: {selectedCompany?.exchange}</li>
                 <li>Forecast Period: {assumptions.forecastPeriod} years</li>
-                <li>Growth Rate: {assumptions.growthRate}%</li>
+                <li>Growth Rate: Calculated by the model.</li>
                 <li>Discount Rate (WACC): {assumptions.discountRate}%</li>
               </ul>
             </div>

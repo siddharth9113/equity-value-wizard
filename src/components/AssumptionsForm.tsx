@@ -37,20 +37,13 @@ const AssumptionsForm = ({ assumptions, setAssumptions }: AssumptionsFormProps) 
     <Card className="w-full">
       <CardHeader>
         <CardTitle>DCF Assumptions</CardTitle>
-        <CardDescription>Set your key assumptions for the valuation model</CardDescription>
+        <CardDescription>Set some of your key assumptions for the valuation model. Other assumptions will be calculated with analytical models</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="growthRate">Revenue Growth Rate (%)</Label>
-            <Input
-              id="growthRate"
-              name="growthRate"
-              type="number"
-              placeholder="5.0"
-              value={assumptions.growthRate}
-              onChange={handleChange}
-            />
+            <p className="text-xs text-muted-foreground">Calculated via sentiment analysis</p>
             <p className="text-xs text-muted-foreground">Expected annual growth rate for revenue projections</p>
           </div>
           
@@ -87,15 +80,7 @@ const AssumptionsForm = ({ assumptions, setAssumptions }: AssumptionsFormProps) 
           <Separator />
           
           <div className="space-y-2">
-            <Label htmlFor="forecastPeriod">Forecast Period (Years)</Label>
-            <Input
-              id="forecastPeriod"
-              name="forecastPeriod"
-              type="number"
-              placeholder="5"
-              value={assumptions.forecastPeriod}
-              onChange={handleChange}
-            />
+            <Label htmlFor="forecastPeriod">Forecast Period = 5 (Years)</Label>
             <p className="text-xs text-muted-foreground">Number of years to project cash flows</p>
           </div>
           
@@ -103,14 +88,7 @@ const AssumptionsForm = ({ assumptions, setAssumptions }: AssumptionsFormProps) 
           
           <div className="space-y-2">
             <Label htmlFor="taxRate">Tax Rate (%)</Label>
-            <Input
-              id="taxRate"
-              name="taxRate"
-              type="number"
-              placeholder="25.0"
-              value={assumptions.taxRate}
-              onChange={handleChange}
-            />
+            <p className="text-xs text-muted-foreground">To be calculated by Model</p>
             <p className="text-xs text-muted-foreground">Effective corporate tax rate</p>
           </div>
           
@@ -118,14 +96,7 @@ const AssumptionsForm = ({ assumptions, setAssumptions }: AssumptionsFormProps) 
           
           <div className="space-y-2">
             <Label htmlFor="sharesOutstanding">Shares Outstanding (millions)</Label>
-            <Input
-              id="sharesOutstanding"
-              name="sharesOutstanding"
-              type="number"
-              placeholder="100"
-              value={assumptions.sharesOutstanding}
-              onChange={handleChange}
-            />
+            <p className="text-xs text-muted-foreground">To be calculated by Model</p>
             <p className="text-xs text-muted-foreground">Total number of outstanding shares</p>
           </div>
         </div>
