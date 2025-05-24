@@ -5,9 +5,17 @@ import { Input } from "@/components/ui/input";
 
 // Mock data array - in a real app, this would come from an API
 const indianCompanies = [
-  { symbol: 'AAPL', name: 'Apple Inc.', exchange: 'MYSE' },
-  { symbol: 'META', name: 'Meta Inc', exchange: 'MYSE' },
-  { symbol: 'MSFT', name: 'Microsoft Inc.', exchange: 'MYSE' },
+  { symbol: 'AAPL', name: 'Apple Inc.', exchange: 'NYSE' },
+  { symbol: 'META', name: 'Meta Inc', exchange: 'NYSE' },
+  { symbol: 'MSFT', name: 'Microsoft Inc.', exchange: 'NYSE' },
+  { symbol: 'PM', name: 'Philip Morris International', exchange: 'NYSE' },
+  { symbol: 'CSCO', name: 'Cisco Systems Inc.', exchange: 'NYSE' },
+  { symbol: 'JNJ', name: 'Johnson and Johnson', exchange: 'NYSE' },
+  { symbol: 'HD', name: 'The Home Depot Inc.', exchange: 'NYSE' },
+  { symbol: 'UNH', name: 'UnitedHealth Group Incorporated', exchange: 'NYSE' },
+  { symbol: 'KO', name: 'The Coca-Cola Company', exchange: 'NYSE' },
+  { symbol: 'V', name: 'Visa Inc.', exchange: 'NYSE' },
+  { symbol: 'MA', name: 'Mastercard Incorporated', exchange: 'NYSE' },
 ];
 
 interface CompanySearchProps {

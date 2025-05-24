@@ -28,6 +28,86 @@
         { "date": "2023-06-30", "baseline": 900,  "adjusted": 1278, "price": 340 },
         { "date": "2024-06-30", "baseline": 1147, "adjusted": 1636, "price": 450 }
       ]
+    },
+    "PM": {
+      "enterpriseValue": "189B",
+      "equityValue": "149B",
+      "sharePrice": 96.20,
+      "chartData": [
+        { "date": "2022-06-30", "baseline": 85.89 ,  "adjusted": 95.89 , "price": 100.99 },
+        { "date": "2023-06-30", "baseline": 76.16 ,  "adjusted": 85.83 , "price": 93.67 },
+        { "date": "2024-06-30", "baseline": 89.62 , "adjusted": 100.21 , "price": 120.08 }
+      ]
+    },
+    "CSCO": {
+      "enterpriseValue": "136B",
+      "equityValue": "133B",
+      "sharePrice": 31.90,
+      "chartData": [
+        { "date": "2022-06-30", "baseline": "" ,  "adjusted": 31.67 , "price": 45.01 },
+        { "date": "2023-06-30", "baseline": "" ,  "adjusted": 39.98 , "price": 51.90 },
+        { "date": "2024-06-30", "baseline": "" , "adjusted": 22.13 , "price": 47.62 }
+      ]
+    },
+    "JNJ": {
+      "enterpriseValue": "409B",
+      "equityValue": "382B",
+      "sharePrice": 146,
+      "chartData": [
+        { "date": "2022-06-30", "baseline": 128 ,  "adjusted": 145.92 , "price": 176.28 },
+        { "date": "2023-06-30", "baseline": 165.39 ,  "adjusted": 186.06 , "price": 156.47 },
+        { "date": "2024-06-30", "baseline": 161.19 , "adjusted": 181.13 , "price": 144.5 }
+      ]
+    },
+    "HD": {
+      "enterpriseValue": "196B",
+      "equityValue": "148B",
+      "sharePrice": 145,
+      "chartData": [
+        { "date": "2022-06-30", "baseline": 128 ,  "adjusted": 145.92 , "price": 176.28 },
+        { "date": "2023-06-30", "baseline": 165.39 ,  "adjusted": 186.06 , "price": 156.47 },
+        { "date": "2024-06-30", "baseline": 161.19 , "adjusted": 181.13 , "price": 144.5 }
+      ]
+    },
+    "UNH": {
+      "enterpriseValue": "1.46T",
+      "equityValue": "1.42T",
+      "sharePrice": 1630,
+      "chartData": [
+        { "date": "2022-06-30", "baseline": 1280 ,  "adjusted": 1620.92 , "price": 556.28 },
+        { "date": "2023-06-30", "baseline": 1450.39 ,  "adjusted": 1860.06 , "price": 551.47 },
+        { "date": "2024-06-30", "baseline": 1398.19 , "adjusted": 1801.13 , "price": 544.5 }
+      ]
+    },
+    "KO": {
+      "enterpriseValue": "462B",
+      "equityValue": "432B",
+      "sharePrice": 99.8,
+      "chartData": [
+        { "date": "2022-12-31", "baseline": 77.46 ,  "adjusted": 100.15 , "price": 64.28 },
+        { "date": "2023-12-31", "baseline": 80.39 ,  "adjusted": 103.06 , "price": 59.47 },
+        { "date": "2024-12-31", "baseline": 67.19 , "adjusted": 85.13 , "price": 61.78 }
+      ]
+    },
+    "V": {
+      "enterpriseValue": "1.69T",
+      "equityValue": "1.69T",
+      "sharePrice": 1020,
+      "chartData": [
+        { "date": "2022-09-30", "baseline": 770.46 ,  "adjusted": 1010.15 , "price": 194.28 },
+        { "date": "2023-09-30", "baseline": 810.39 ,  "adjusted": 1139.06 , "price": 209.47 },
+        { "date": "2024-09-30", "baseline": 967.19 , "adjusted": 1305.13 , "price": 281.78 }
+      ]
+    },
+    "MA": {
+      "enterpriseValue": "1.39T",
+      "equityValue": "1.38T",
+      "sharePrice": 1430,
+      "chartData": [
+        { "date": "2022-09-30", "baseline": 1011.46 ,  "adjusted": 1410.15 , "price": 360.28 },
+        { "date": "2023-09-30", "baseline": 1198.39 ,  "adjusted": 1639.06 , "price": 409.47 },
+        { "date": "2024-09-30", "baseline": 1387.19 , "adjusted": 1905.13 , "price": 561.78 }
+      ]
     }
   }
   

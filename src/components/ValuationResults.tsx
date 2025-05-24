@@ -64,7 +64,7 @@ const ValuationResults = ({
           </div>
           
           <div className="bg-finance-accent p-4 rounded-lg text-finance-dark">
-            <h3 className="text-sm font-medium">Share Price</h3>
+            <h3 className="text-sm font-medium">Per Share Value</h3>
             <p className="text-2xl font-bold">${sharePrice.toFixed(2)}</p>
           </div>
         </div>
