@@ -8,6 +8,9 @@ import StepsNavigation from '../components/StepsNavigation';
 import { calculateDCF } from '../utils/dcfCalculator';
 import { Assumptions, ValuationResult } from '../types';
 import { toast } from 'sonner';
+import DCF_STATIC from '../data/dcf_static.json';
+import chartData from '../data/dcf_static.json'
+import SharePriceChart from '@/components/SharePriceChart';
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -120,16 +123,24 @@ const Index = () => {
             </div>
           </div>
         );
-      case 3:
-        return (
-          <ValuationResults 
-            enterpriseValue={valuationResult?.enterpriseValue || 0}
-            equityValue={valuationResult?.equityValue || 0}
-            sharePrice={valuationResult?.sharePrice || 0}
-            projections={valuationResult?.projections || []}
-            isLoading={isCalculating}
-          />
-        );
+        case 3:
+          if (!selectedCompany) return null;
+          const ticker     = selectedCompany.symbol;
+          const staticData = (DCF_STATIC as any)[ticker];
+        
+          return (
+            <>
+              <ValuationResults
+                enterpriseValue={staticData.enterpriseValue}
+                equityValue={staticData.equityValue}
+                sharePrice={staticData.sharePrice}
+                projections={[]}    // or staticData.projections if you have them
+                isLoading={false}
+                chartData={staticData.chartData}
+              />
+            </>
+          );
+        
       default:
         return null;
     }

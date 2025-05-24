@@ -2,6 +2,10 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import DCF_STATIC from '../data/dcf_static.json';
+import SharePriceChart from './SharePriceChart';
+import { Share } from 'lucide-react';
+import chartData from '../data/dcf_static.json'
 
 interface ValuationResultsProps {
   enterpriseValue: number;
@@ -13,6 +17,7 @@ interface ValuationResultsProps {
     discountedCashFlow: number;
   }[];
   isLoading: boolean;
+  chartData: {date:String; price: number}[];
 }
 
 const ValuationResults = ({ 
@@ -20,7 +25,8 @@ const ValuationResults = ({
   equityValue, 
   sharePrice, 
   projections,
-  isLoading 
+  isLoading,
+  chartData 
 }: ValuationResultsProps) => {
   if (isLoading) {
     return (
@@ -64,20 +70,7 @@ const ValuationResults = ({
         </div>
         
         <div className="h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              data={projections}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="year" />
-              <YAxis />
-              <Tooltip formatter={(value) => `$${Number(value).toLocaleString()}`} />
-              <Legend />
-              <Line type="monotone" dataKey="freeCashFlow" stroke="#1a365d" name="Free Cash Flow" />
-              <Line type="monotone" dataKey="discountedCashFlow" stroke="#c9b037" name="Discounted Cash Flow" />
-            </LineChart>
-          </ResponsiveContainer>
+          <SharePriceChart data={chartData} />
         </div>
       </CardContent>
     </Card>

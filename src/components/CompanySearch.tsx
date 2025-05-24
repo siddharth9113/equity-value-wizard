@@ -5,11 +5,9 @@ import { Input } from "@/components/ui/input";
 
 // Mock data array - in a real app, this would come from an API
 const indianCompanies = [
-  { symbol: 'TCS', name: 'Tata Consultancy Services Ltd.', exchange: 'NSE' },
-  { symbol: 'RELIANCE', name: 'Reliance Industries Ltd.', exchange: 'BSE' },
-  { symbol: 'HDFCBANK', name: 'HDFC Bank Ltd.', exchange: 'NSE' },
-  { symbol: 'INFY', name: 'Infosys Ltd.', exchange: 'BSE' },
-  { symbol: 'WIPRO', name: 'Wipro Ltd.', exchange: 'NSE' },
+  { symbol: 'AAPL', name: 'Apple Inc.', exchange: 'MYSE' },
+  { symbol: 'META', name: 'Meta Inc', exchange: 'MYSE' },
+  { symbol: 'MSFT', name: 'Microsoft Inc.', exchange: 'MYSE' },
 ];
 
 interface CompanySearchProps {
