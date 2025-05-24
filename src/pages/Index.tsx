@@ -186,7 +186,7 @@ const Index = () => {
         </div>
       </main>
       <footer className="bg-finance-dark text-white text-sm p-4 text-center">
-        <p>DCF Valuation Tool | Professional Financial Analysis</p>
+        <p>DCF Valuation Tool | Professional Financial Analysis | Limited by mentality, growing with technology</p>
       </footer>
     </div>
   );
