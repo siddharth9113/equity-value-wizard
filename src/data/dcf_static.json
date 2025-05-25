@@ -1,7 +1,7 @@
 {
     "AAPL": {
-      "enterpriseValue": 292,
-      "equityValue": 281,
+      "enterpriseValue": "2.92T",
+      "equityValue": "2.81T",
       "sharePrice": 173,
       "chartData": [
         { "date": "2022-09-24", "baseline": 148, "adjusted": 173, "price": 150 },
@@ -10,23 +10,13 @@
       ]
     },
     "META": {
-      "enterpriseValue": 276,
-      "equityValue": 275,
-      "sharePrice": 102,
+      "enterpriseValue": "2.76T",
+      "equityValue": "2.75T",
+      "sharePrice": "100",
       "chartData": [
         { "date": "2022-12-31", "baseline": 700,  "adjusted": 1000,  "price": 120 },
         { "date": "2023-12-31", "baseline": 1175, "adjusted": 1650,  "price": 355 },
         { "date": "2024-12-31", "baseline": 1850, "adjusted": 2600,  "price": 580 }
-      ]
-    },
-    "MSFT": {
-      "enterpriseValue": 967,
-      "equityValue": 962,
-      "sharePrice": 128,
-      "chartData": [
-        { "date": "2022-06-30", "baseline": 900,  "adjusted": 1280, "price": 250 },
-        { "date": "2023-06-30", "baseline": 900,  "adjusted": 1278, "price": 340 },
-        { "date": "2024-06-30", "baseline": 1147, "adjusted": 1636, "price": 450 }
       ]
     },
     "PM": {
